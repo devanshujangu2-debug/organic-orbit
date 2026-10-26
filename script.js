@@ -5,8 +5,7 @@ const B = {
   name: 'Ramsnehi Enterprises',
   tel: '+918432644312', show: '084326 44312', wa: '918432644312',
   ig: 'https://www.instagram.com/ramsnehi_enterprise?utm_source=ig_web_button_share_sheet&mdxt=ZDNlZDc0MzIxNw==',
-  map: 'https://share.google/jITzPSecSybUU6dbn',
-  embed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.482975295628!2d73.00071777543923!3d26.278438577030936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39418d72f1f6220b%3A0xc945c9f7878a4299!2sRAMSNEHI%20ENTERPRISES!5e0!3m2!1sen!2sin!4v1792389050005!5m2!1sen!2sin'
+  map: 'https://share.google/jITzPSecSybUU6dbn'
 };
 
 /* =====================================================
@@ -336,7 +335,7 @@ function fillDynamic() {
   $$('[data-hours]').forEach(el => el.innerHTML = hoursHTML());
   $$('[data-open]').forEach(el => { const o = openNow(); el.className = 'open ' + (o ? 'on' : ''); el.innerHTML = `<i></i>${o ? 'Open Now' : 'Closed Now'} • Jodhpur`; });
 
-  $('#mapBox').innerHTML = `<iframe class="map" src="${B.embed}" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Ramsnehi Enterprises location"></iframe>`;
+  $('#mapBox').innerHTML = `<a class="map mapcard" href="${B.map}" target="_blank" rel="noopener"><span class="pin">📍</span><b>Ramsnehi Enterprises</b><small>9th A Pal Road, Sardarpura,<br>Opposite Balaji Mandir, Jodhpur – 342003</small><em>🧭 Open in Google Maps</em></a>`;
 
   $('#callCard').href = $('#ctaCall').href = $('#fCall').href = 'tel:' + B.tel;
   $('#igCard').href = $('#fIg').href = B.ig;

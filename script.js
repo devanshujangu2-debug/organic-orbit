@@ -109,7 +109,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const wa = t => `https://wa.me/${B.wa}?text=${encodeURIComponent(t)}`;
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const HRS = [[9, 20.5, '9:00 AM – 8:30 PM'], [8, 17, '8:00 AM – 5:00 PM'], [8, 20, '8:00 AM – 8:00 PM'], [9, 19, '9:00 AM – 7:00 PM'], [9, 20, '9:00 AM – 8:00 PM'], [9, 17, '9:00 AM – 5:00 PM'], [9, 20, '9:00 AM – 8:00 PM']];
+const HRS = [[8, 20, '8:00 AM - 8:00 PM'], [8, 20, '8:00 AM - 8:00 PM'], [8, 20, '8:00 AM - 8:00 PM'], [8, 20, '8:00 AM - 8:00 PM'], [8, 20, '8:00 AM - 8:00 PM'], [8, 20, '8:00 AM - 8:00 PM'], [8, 20, '8:00 AM - 8:00 PM']];
 const ist = () => new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
 const openNow = () => { const d = ist(), t = d.getHours() + d.getMinutes() / 60, h = HRS[d.getDay()]; return t >= h[0] && t < h[1]; };
 const hoursHTML = () => { const today = ist().getDay(); return `<ul class="hours">${[1, 2, 3, 4, 5, 6, 0].map(i => `<li class="${i === today ? 'today' : ''}"><span>${DAYS[i]}</span><span>${HRS[i][2]}</span></li>`).join('')}</ul>`; };

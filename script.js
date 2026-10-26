@@ -45,12 +45,6 @@ const MEDIA = {
   }
 };
 
-const ICONS = {
-  call: { base: 'images/call-icon', fallback: '📞' },
-  wa: { base: 'images/whatsapp-icon', fallback: '💬' },
-  ig: { base: 'images/instagram-icon', fallback: '📸' }
-};
-
 /* =====================================================
    3) PRODUCTS DATA (6 categories)
 ===================================================== */
@@ -137,20 +131,6 @@ const imgTag = (k, alt) => MEDIA.images[k]
   ? `<img data-b="${MEDIA.images[k]}" data-i="0" src="${cands(MEDIA.images[k])[0]}" alt="${alt}" loading="lazy" decoding="async" onerror="imgNext(this)">`
   : '';
 
-function initFallbackIcon(img, base, fallback) {
-  img.dataset.i = 0;
-  img.onerror = () => {
-    const list = cands(base), i = (+img.dataset.i || 0) + 1;
-    if (i < list.length) { img.dataset.i = i; img.src = list[i]; }
-    else { const s = document.createElement('span'); s.textContent = fallback; img.replaceWith(s); }
-  };
-  img.src = cands(base)[0];
-}
-function setupFloatIcons() {
-  const map = [['callIconImg', ICONS.call], ['waIconImg', ICONS.wa], ['igIconImg', ICONS.ig]];
-  map.forEach(([id, cfg]) => { const el = document.getElementById(id); if (el) initFallbackIcon(el, cfg.base, cfg.fallback); });
-}
-
 /* =====================================================
    6) BUILD CONTENT
 ===================================================== */
@@ -197,7 +177,7 @@ function buildProducts() {
 }
 
 /* =====================================================
-   7) CART — ab payment nahi, seedha WhatsApp enquiry
+   7) CART — WhatsApp enquiry (no payment gateway)
 ===================================================== */
 let cart = JSON.parse(localStorage.getItem('rs_cart') || '[]');
 const saveCart = () => localStorage.setItem('rs_cart', JSON.stringify(cart));
@@ -358,9 +338,8 @@ function fillDynamic() {
 
   $('#mapBox').innerHTML = `<iframe class="map" src="${B.embed}" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Ramsnehi Enterprises location"></iframe>`;
 
-  $('#callCard').href = $('#ctaCall').href = $('#fCall').href = $('#fltCall').href = 'tel:' + B.tel;
-  $('#fltWa').href = wa('Hello Ramsnehi Enterprises, I need some information about your machines.');
-  $('#igCard').href = $('#fIg').href = $('#fltIg').href = B.ig;
+  $('#callCard').href = $('#ctaCall').href = $('#fCall').href = 'tel:' + B.tel;
+  $('#igCard').href = $('#fIg').href = B.ig;
   $('#dirBtn').href = $('#fMap').href = B.map;
   $('#yr').textContent = '© ' + new Date().getFullYear();
 
@@ -426,12 +405,5 @@ function initEffects() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  setupLogo(); buildProducts(); fillDynamic(); initEffects(); wireCart(); wireSearch(); wireService(); initSlider(); setupFloatIcons(); renderBadge();
-});
-document.addEventListener("DOMContentLoaded", function() {
-    // Saare prices, old prices aur discount elements ko select karke hide karne ke liye
-    const elementsToHide = document.querySelectorAll('.old-price, .discount, span.old-price, span.discount, .product-price');
-    elementsToHide.forEach(el => {
-        el.style.display = 'none';
-    });
+  setupLogo(); buildProducts(); fillDynamic(); initEffects(); wireCart(); wireSearch(); wireService(); initSlider(); renderBadge();
 });

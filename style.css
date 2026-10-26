@@ -156,15 +156,6 @@ footer li{margin-bottom:8px}
 footer li a{color:rgba(255,255,255,.72);transition:color .3s}
 .copy{text-align:center;border-top:1px solid rgba(255,255,255,.15);margin-top:30px;padding-top:18px;font-size:.82rem;color:rgba(255,255,255,.65)}
 
-/* FLOATING BUTTONS (real icon support, emoji fallback) */
-.float{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:12px;z-index:90}
-.float-btn{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;box-shadow:0 8px 22px rgba(15,40,100,.3);transition:transform .25s;overflow:hidden}
-.float-btn:hover{transform:scale(1.08)}
-.float .wa{background:#25d366}
-.float .call{background:#2563eb}
-.float .ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
-.float-icon-img{width:28px;height:28px;object-fit:contain}
-
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translate3d(0,32px,0);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);will-change:opacity,transform}
 .reveal.left{transform:translate3d(-40px,0,0)}
@@ -219,6 +210,8 @@ footer li a{color:rgba(255,255,255,.72);transition:color .3s}
 .mrp{color:var(--mut);text-decoration:line-through;font-size:.85rem}
 .off{color:#16a34a;font-size:.8rem;font-weight:600}
 .item-card .btn{margin-top:6px;padding:10px 16px;font-size:.88rem}
+/* Price row (price + cut price + discount) hidden, sirf rating/name/image/button dikhte hain */
+.item-card .price-row{display:none}
 @keyframes flashHi{0%{box-shadow:0 0 0 4px rgba(37,99,235,.5)}100%{box-shadow:var(--sh)}}
 .item-card.flash{animation:flashHi 1.4s ease}
 
@@ -260,7 +253,8 @@ footer li a{color:rgba(255,255,255,.72);transition:color .3s}
 .modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:20px 24px 4px}
 .modal-head button{background:none;border:0;font-size:1.3rem;cursor:pointer;color:var(--mut);flex:none}
 .modal-body{padding:4px 24px 24px;overflow-y:auto}
-/* Floating Contact Buttons Styling */
+
+/* ============ YOUR CUSTOM FLOATING CONTACT BUTTONS (unchanged) ============ */
 .floating-contact-buttons {
   position: fixed;
   bottom: 25px;
@@ -300,12 +294,4 @@ footer li a{color:rgba(255,255,255,.72);transition:color .3s}
 
 .float-btn.phone {
   background-color: #007bff;
-}
-/* Product prices aur discount hide karne ke liye */
-.product-price, .price, .old-price, .discount {
-  display: none !important;
-}
-/* Purana cut kiya hua price aur discount percentage hide karne ke liye */
-.old-price, span.old-price, .discount, span.discount {
-  display: none !important;
 }
